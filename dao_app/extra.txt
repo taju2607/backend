@@ -1,0 +1,38 @@
+pipeline = [
+            {'$match': {'actual_shipment_date': {'$gte': end_date, '$lte': start_date}}},
+            {'$group': {'_id': {'year': {'$year': '$actual_shipment_date'}, 'month': {'$month': '$actual_shipment_date'}}, 'total_sales': {'$sum': '$Gross_sales'}}},
+            {'$sort': {'_id': 1}},
+            {'$skip': int(request.args.get('skip', 0))},
+            {'$limit': int(request.args.get('limit', 10))}
+        ]
+
+
+
+pipeline = [
+            {'$match': {'creation_date': {'$gte': end_date, '$lte': start_date}}},
+            {'$group': {'_id': {'year': {'$year': '$creation_date'}, 'month': {'$month': '$creation_date'}}, 'total_amount': {'$sum': '$amount'}}},
+            {'$sort': {'_id': 1}},
+            {'$skip': int(request.args.get('skip', 0))},
+            {'$limit': int(request.args.get('limit', 10))}
+        ]
+
+
+
+pipeline = [
+            {'$match': {'Date': {'$gte': start_date, '$lte': end_date}}},
+            {'$group': {'_id': {'year': {'$year': '$Date'}, 'month': {'$month': '$Date'}}, 'total_amount': {'$sum': '$amount'}}},
+            {'$sort': {'_id': 1}},
+            {'$skip': int(request.args.get('skip', 0))},
+            {'$limit': int(request.args.get('limit', 10))}
+        ]
+
+
+
+pipeline = [
+            {'$match': {'Date': {'$gte': start_date, '$lte': end_date}}},
+            {'$group': {'_id': {'year': {'$year': '$Date'}, 'month': {'$month': '$Date'}}, 'total_amount': {'$sum': '$amount'}}},
+            {'$sort': {'_id': 1}},
+            {'$skip': int(request.args.get('skip', 0))},
+            {'$limit': int(request.args.get('limit', 10))}
+        ]
+
